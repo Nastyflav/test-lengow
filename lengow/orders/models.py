@@ -22,8 +22,10 @@ class Order(models.Model):
         verbose_name='Date du paiement', null=True
     )
     order_amount = models.DecimalField(
-        max_digits=5, decimal_places=2, verbose_name='Montant en euros', null=True
+        max_digits=5, decimal_places=2,
+        verbose_name='Montant en euros',
+        null=True
     )
 
     class Meta:
-        verbose_name= 'Commande'
+        verbose_name = 'Commande'
