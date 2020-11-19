@@ -23,7 +23,8 @@ class IndexView(ListView):
 
 class OrderDetailsView(DetailView):
     """To render all the fields in every order"""
-    pass
+    model = Order
+    template_name = "orders/order_details.html"
 
 
 class OrderSearchView(ListView):
