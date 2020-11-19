@@ -1,8 +1,12 @@
+{% extends "_base.html" %}
+
 {% block content %}
 
 {% for order in object_list %}
 <div class="row">
-    <p>Commande n°{{ order.id }}</p>
+    <p>Commande n°{{ order.id }}
+        <a href="{% url 'orders:order' order.id"></a>
+    </p>
 </div>
 {% endfor %}
 

@@ -15,7 +15,6 @@ from orders.models import Order
 class IndexView(ListView):
     """To render the app index with the orders list"""
     template_name = 'orders/index.html'
-    paginate_by = 10
     model = Order
 
     def query_set(self):
