@@ -1,5 +1,9 @@
 {% block content %}
 
-
+{% for order in object_list %}
+<div class="row">
+    <p>Commande n°{{ order.id }}</p>
+</div>
+{% endfor %}
 
 {% endblock %}

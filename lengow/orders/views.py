@@ -7,13 +7,19 @@ Licence: `GNU GPL v3` GNU GPL v3: http://www.gnu.org/licenses/
 
 """
 
-from django.shortcuts import render
-from django.views.generic import DetailView, TemplateView, ListView
+from django.views.generic import DetailView, ListView
+
+from orders.models import Order
 
 
-class IndexView(TemplateView):
+class IndexView(ListView):
     """To render the app index with the orders list"""
     template_name = 'orders/index.html'
+    paginate_by = 10
+    model = Order
+
+    def query_set(self):
+        return Order.objects.filter().order_by("id")
 
 
 class OrderDetailsView(DetailView):
