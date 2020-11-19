@@ -32,8 +32,8 @@ class TestModels(TestCase):
     def test_order_verbose_name(self):
         """To check the order fields verbose names"""
         data = Order.objects.get(id=1)
-        verbose_name = data._meta.get_field('customer').verbose_name
-        self.assertEquals(verbose_name, "Prénom / Nom")
+        verbose_name = data._meta.get_field('currency').verbose_name
+        self.assertEquals(verbose_name, "Devise")
 
     def test_order_max_digits(self):
         """To check the order amount max digits"""

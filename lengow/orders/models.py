@@ -15,9 +15,6 @@ class Order(models.Model):
     marketplace = models.CharField(
         max_length=100, verbose_name='Marketplace', null=True
     )
-    customer = models.CharField(
-        max_length=200, verbose_name='Prénom / Nom', null=True
-    )
     payment_date = models.DateField(
         verbose_name='Date du paiement', null=True
     )
@@ -25,6 +22,9 @@ class Order(models.Model):
         max_digits=5, decimal_places=2,
         verbose_name='Montant en euros',
         null=True
+    )
+    currency = models.CharField(
+        max_length=5, verbose_name='Devise', null=True
     )
 
     class Meta:

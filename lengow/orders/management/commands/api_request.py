@@ -22,13 +22,13 @@ class APIRequest():
             root = tree.getroot()
             for data in root[1].findall('order'):
                 marketplace = data.find('marketplace').text
-                customer = data.find('billing_lastname').text
                 order_purchase_date = data.find('order_purchase_date').text
                 order_amount = data.find('order_amount').text
+                currency = data.find('order_currency').text
 
                 order = Order.objects.create(
                     marketplace=marketplace,
-                    customer=customer,
-                    order_purchase_date = order_purchase_date,
-                    order_amount = order_amount
+                    payment_date=order_purchase_date,
+                    order_amount=order_amount,
+                    currency=currency
                 )
