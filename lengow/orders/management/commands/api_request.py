@@ -19,16 +19,16 @@ class APIRequest():
         """To parse the xml url and get the wanted datas"""
         with urlopen('http://test.lengow.io/orders-test.xml') as url:
             tree = ElmTree.parse(url)
-            root = tree.getroot()
-            for data in root[1].findall('order'):
+            order_root = tree.getroot()
+            for data in order_root[1].findall('order'):
                 marketplace = data.find('marketplace').text
-                order_purchase_date = data.find('order_purchase_date').text
+                payment_date = data.find('order_purchase_date').text
                 order_amount = data.find('order_amount').text
                 currency = data.find('order_currency').text
 
                 order = Order.objects.create(
                     marketplace=marketplace,
-                    payment_date=order_purchase_date,
+                    payment_date=payment_date,
                     order_amount=order_amount,
                     currency=currency
                 )

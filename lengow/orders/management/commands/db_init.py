@@ -14,7 +14,7 @@ from .api_request import APIRequest
 
 class Command(BaseCommand):
     """Command class for custom django commands"""
-    help='Load datas from the xml API to our local database'
+    help = 'Load datas from the xml API to our local database'
 
     def handle(self, *args, **options):
         self.db = APIRequest()
