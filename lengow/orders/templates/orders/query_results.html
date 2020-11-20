@@ -2,10 +2,21 @@
 
 {% block content %}
 
+{% if not object_list %}
+
+<p>Désolé, aucune commande ne correspond à votre recherche</p>
+<p>
+    <a href="{% url 'orders:index' %}"> Retour à l'accueil</a>
+</p>
+
+{% endif %}
+
 {% for order in object_list %}
-
-
-
+<div class="row">
+    <p>
+        <a href="{% url 'orders:order' order.id %}">Commande n°{{ order.id }}</a>
+    </p>
+</div>
 {% endfor %}
 
 {% endblock %}

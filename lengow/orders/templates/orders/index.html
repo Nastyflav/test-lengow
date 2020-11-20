@@ -8,8 +8,17 @@
         <a href="{% url 'orders:order' order.id %}">Commande n°{{ order.id }}</a>
     </p>
 </div>
-
-
 {% endfor %}
+
+<div class="row">
+    <form method="get" action="{% url 'orders:results' %}">
+        <div>
+            <input type="text" name="query" class="form-control" placeholder="Recherchez votre marketplace" required>
+        </div>
+        <div>
+            <button type="submit">Go!</button>
+        </div>
+    </form>
+</div>
 
 {% endblock %}

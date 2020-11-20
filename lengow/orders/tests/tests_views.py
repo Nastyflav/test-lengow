@@ -76,11 +76,6 @@ class TestViews(TestCase):
         self.assertTemplateUsed(response, 'orders/query_results.html')
         self.assertEqual(response.status_code, 200)
 
-    # def test_query_results_page_when_invalid_url(self):
-    #     """To verify the 404 error when query is altered"""
-    #     response = self.client.get(self.query_url + '?query=amazon&page=@')
-    #     self.assertEqual(response.status_code, 404)
-
     def query_is_valid(self):
         """To check if we've got an order if there's one"""
         response = self.client.get(self.query_url + '?query=amazon')
