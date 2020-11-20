@@ -46,4 +46,3 @@ class OrderCreateView(CreateView):
     model = Order
     fields = ['marketplace', 'payment_date', 'order_amount', 'currency']
     success_url = '/'
-
