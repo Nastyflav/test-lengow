@@ -6,7 +6,7 @@
 `pip install -r requirements.txt` to install dependencies
 
 ## Run Django Server
-This app works with PostgreSQL, please make the changes you need in the lengow/settings.py file
+This app works with PostgreSQL, please make the changes you need in the lengow/settings.py file\
 `python manage.py migrate` to migrate the database\
 `python manage.py db_init` to fill the database\
 `python manage.py runserver`
