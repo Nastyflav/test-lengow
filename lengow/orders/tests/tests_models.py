@@ -18,9 +18,9 @@ class TestModels(TestCase):
         """Create a temp order to perform tests"""
         Order.objects.create(
             marketplace="Cdiscount",
-            customer="User",
             payment_date="2020-11-18",
-            order_amount="56.13"
+            order_amount="56.13",
+            currency="EUR",
         )
 
     def test_order_max_lenght(self):
