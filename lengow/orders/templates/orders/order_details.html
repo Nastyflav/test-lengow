@@ -4,10 +4,26 @@
 
 <div>
     <ul>
-        <li><strong>Marketplace :</strong> {{ object.marketplace }}</li>
-        <li><strong>Date de paiement :</strong> {{ object.payment_date }}</li>
-        <li><strong>Montant :</strong> {{ object.order_amount }}</li>
-        <li><strong>Devise :</strong> {{ object.currency }}</li>
+        {% if object.marketplace %}
+            <li><strong>Marketplace :</strong> {{ object.marketplace }}</li>
+        {% else %}
+            <li><strong>Marketplace :</strong> Marketplace inconnue</li>
+        {% endif %}
+        {% if object.payment_date %} 
+            <li><strong>Date de paiement :</strong> {{ object.payment_date }}</li>
+        {% else %}
+            <li><strong>Montant :</strong> Date inconnue </li>
+        {% endif %}
+        {% if object.order_amount %} 
+            <li><strong>Montant :</strong> {{ object.order_amount }}</li>
+        {% else %}
+            <li><strong>Montant :</strong> Montant inconnu</li>
+        {% endif %}
+        {% if object.currency %}
+            <li><strong>Devise :</strong> {{ object.currency }}</li>
+        {% else %}
+        <li><strong>Montant :</strong> Devise inconnue</li>
+        {% endif %}
     </ul>
 </div>
 
