@@ -2,6 +2,13 @@
 
 {% block content %}
 
-
+<div>
+    <ul>
+        <li><strong>Marketplace :</strong> {{ object.marketplace }}</li>
+        <li><strong>Date de paiement :</strong> {{ object.payment_date }}</li>
+        <li><strong>Montant :</strong> {{ object.order_amount }}</li>
+        <li><strong>Devise :</strong> {{ object.currency }}</li>
+    </ul>
+</div>
 
 {% endblock %}

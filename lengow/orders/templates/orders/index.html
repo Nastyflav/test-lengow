@@ -4,8 +4,8 @@
 
 {% for order in object_list %}
 <div class="row">
-    <p>Commande n°{{ order.id }}
-        <a href="{% url 'orders:order' order.id %}"></a>
+    <p>
+        <a href="{% url 'orders:order' order.id %}">Commande n°{{ order.id }}</a>
     </p>
 </div>
 {% endfor %}
