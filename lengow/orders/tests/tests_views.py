@@ -45,6 +45,7 @@ class TestViews(TestCase):
         cls.client = Client()
         cls.index_url = reverse('orders:index')
         cls.order_url = reverse('orders:order', args=[3])
+        cls.query_url = reverse('orders:results')
         db_init()
 
     def test_index_page_returns_200(self):
@@ -68,3 +69,22 @@ class TestViews(TestCase):
         """To check the invalid response when there's no order"""
         response = self.client.get('/order/14')
         self.assertEqual(response.status_code, 404)
+
+    def test_query_results_page_returns_200(self):
+        """To test the status code and the OrderSearchView"""
+        response = self.client.get(self.query_url + '?query=amazon')
+        self.assertTemplateUsed(response, 'orders/query_results.html')
+        self.assertEqual(response.status_code, 200)
+
+    # def test_query_results_page_when_invalid_url(self):
+    #     """To verify the 404 error when query is altered"""
+    #     response = self.client.get(self.query_url + '?query=amazon&page=@')
+    #     self.assertEqual(response.status_code, 404)
+
+    def query_is_valid(self):
+        """To check if we've got an order if there's one"""
+        response = self.client.get(self.query_url + '?query=amazon')
+        self.assertEqual(response.context_data['object_list'].count(), 1)
+
+
+    

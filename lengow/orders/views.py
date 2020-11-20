@@ -29,4 +29,14 @@ class OrderDetailsView(DetailView):
 
 class OrderSearchView(ListView):
     """To render the results of the query"""
-    pass
+    model = Order
+    template_name = 'orders/query_results.html'
+
+    def get_queryset(self):
+        """Get the orders matching with the query"""
+        query = self.request.GET.get('query')
+        query = str(query).casefold()
+
+        return Order.objects.filter(
+            marketplace__icontains=query).order_by('id')
+
