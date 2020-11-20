@@ -7,7 +7,7 @@ Licence: `GNU GPL v3` GNU GPL v3: http://www.gnu.org/licenses/
 
 """
 
-from django.views.generic import DetailView, ListView
+from django.views.generic import DetailView, ListView, CreateView
 
 from orders.models import Order
 
@@ -39,4 +39,11 @@ class OrderSearchView(ListView):
 
         return Order.objects.filter(
             marketplace__icontains=query).order_by('id')
+
+
+class OrderCreateView(CreateView):
+    """To create a new order object"""
+    model = Order
+    fields = ['marketplace', 'payment_date', 'order_amount', 'currency']
+    success_url = '/'
 
