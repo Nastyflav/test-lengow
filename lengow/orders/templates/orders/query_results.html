@@ -2,21 +2,38 @@
 
 {% block content %}
 
-{% if not object_list %}
+<h1>Résultats de votre recherche</h1>
 
-<p>Désolé, aucune commande ne correspond à votre recherche</p>
-<p>
-    <a href="{% url 'orders:index' %}"> Retour à l'accueil</a>
-</p>
+{% if not object_list %}
+<div class="row">
+    <div class="col-lg-10">
+        <p>Désolé, aucune commande ne correspond à votre recherche</p>
+    </div>
+    <div class="col-lg-2">
+        <p>
+            <a href="{% url 'orders:index' %}"> Retour à l'accueil</a>
+        </p>
+    </div>
+</div>
+
+{% else %}
+
+<div class="row">
+    <h2>Commandes correspondantes :</h2>
+    {% for order in object_list %}
+    <div class="col-lg-10">
+        <p>
+            <a href="{% url 'orders:order' order.id %}">Commande n°{{ order.id }}</a>
+        </p>
+    </div>
+    {% endfor %}
+    <div class="col-lg-2">
+        <p>
+            <a href="{% url 'orders:index' %}"> Retour à l'accueil</a>
+        </p>
+    </div>
+</div>
 
 {% endif %}
-
-{% for order in object_list %}
-<div class="row">
-    <p>
-        <a href="{% url 'orders:order' order.id %}">Commande n°{{ order.id }}</a>
-    </p>
-</div>
-{% endfor %}
 
 {% endblock %}

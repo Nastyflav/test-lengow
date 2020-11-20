@@ -2,7 +2,9 @@
 
 {% block content %}
 
-<div>
+<h1>Détails de la commande n°{{ object.id }}</h1>
+
+<div class="row">
     <ul>
         {% if object.marketplace %}
             <li><strong>Marketplace :</strong> {{ object.marketplace }}</li>

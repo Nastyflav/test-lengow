@@ -2,23 +2,34 @@
 
 {% block content %}
 
-{% for order in object_list %}
-<div class="row">
-    <p>
-        <a href="{% url 'orders:order' order.id %}">Commande n°{{ order.id }}</a>
-    </p>
-</div>
-{% endfor %}
+<h1>Test Recrutement Lengow</h1>
 
 <div class="row">
-    <form method="get" action="{% url 'orders:results' %}">
-        <div>
-            <input type="text" name="query" class="form-control" placeholder="Recherchez votre marketplace" required>
-        </div>
-        <div>
-            <button type="submit">Go!</button>
-        </div>
-    </form>
+    <div class="col-lg-6">
+        <h2>Commandes enregistrées</h2>
+        {% for order in object_list %}
+        <p>
+            <a href="{% url 'orders:order' order.id %}">Commande n°{{ order.id }}</a>
+        </p>
+        {% endfor %}
+    </div>
+    <div class="col-lg-6">
+        <h2>Recherche (par marketplace)</h2>
+        <form method="get" action="{% url 'orders:results' %}">
+            <div>
+                <input type="text" name="query" class="form-control" placeholder="Pour ce test, commandes Amazon ou Cdiscount" required>
+            </div>
+            <div>
+             <button type="submit">Go!</button>
+            </div>
+        </form>   
+    </div>
 </div>
+
+<div class="row">
+    <h2>Création d'une commande</h2>
+</div>
+
+
 
 {% endblock %}
