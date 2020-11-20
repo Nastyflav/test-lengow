@@ -5,28 +5,39 @@
 <h1>Détails de la commande n°{{ object.id }}</h1>
 
 <div class="row">
-    <ul>
-        {% if object.marketplace %}
-            <li><strong>Marketplace :</strong> {{ object.marketplace }}</li>
-        {% else %}
-            <li><strong>Marketplace :</strong> Marketplace inconnue</li>
-        {% endif %}
-        {% if object.payment_date %} 
-            <li><strong>Date de paiement :</strong> {{ object.payment_date }}</li>
-        {% else %}
-            <li><strong>Montant :</strong> Date inconnue </li>
-        {% endif %}
-        {% if object.order_amount %} 
-            <li><strong>Montant :</strong> {{ object.order_amount }}</li>
-        {% else %}
-            <li><strong>Montant :</strong> Montant inconnu</li>
-        {% endif %}
-        {% if object.currency %}
-            <li><strong>Devise :</strong> {{ object.currency }}</li>
-        {% else %}
-        <li><strong>Montant :</strong> Devise inconnue</li>
-        {% endif %}
-    </ul>
+    <div class="col-lg-10">
+        <ul>
+            {% if object.marketplace %}
+                <li><strong>Marketplace :</strong> {{ object.marketplace }}</li>
+            {% else %}
+                <li><strong>Marketplace :</strong> Marketplace inconnue</li>
+            {% endif %}
+            {% if object.payment_date %} 
+                <li><strong>Date de paiement :</strong> {{ object.payment_date }}</li>
+            {% else %}
+                <li><strong>Montant :</strong> Date inconnue </li>
+            {% endif %}
+            {% if object.order_amount %} 
+                <li><strong>Montant :</strong> {{ object.order_amount }}</li>
+            {% else %}
+                <li><strong>Montant :</strong> Montant inconnu</li>
+            {% endif %}
+            {% if object.currency %}
+                <li><strong>Devise :</strong> {{ object.currency }}</li>
+            {% else %}
+            <li><strong>Montant :</strong> Devise inconnue</li>
+            {% endif %}
+        </ul>
+        <div class="row">
+            <button type="button">
+            <a href="{% url 'orders:order-update' object.id %}">Modifier la commande</a></button>
+        </div>
+    </div>
+    <div class="col-lg-2">
+        <p>
+            <a href="{% url 'orders:index' %}"> Retour à l'accueil</a>
+        </p>
+    </div>
 </div>
 
 {% endblock %}

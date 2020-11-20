@@ -46,6 +46,8 @@ class TestViews(TestCase):
         cls.index_url = reverse('orders:index')
         cls.order_url = reverse('orders:order', args=[3])
         cls.query_url = reverse('orders:results')
+        cls.order_add_url = reverse('orders:order-add')
+        cls.order_update_url = reverse('orders:order-update', args=[1])
         db_init()
 
     def test_index_page_returns_200(self):
@@ -76,10 +78,43 @@ class TestViews(TestCase):
         self.assertTemplateUsed(response, 'orders/query_results.html')
         self.assertEqual(response.status_code, 200)
 
-    def query_is_valid(self):
+    def test_query_is_valid(self):
         """To check if we've got an order if there's one"""
         response = self.client.get(self.query_url + '?query=amazon')
         self.assertEqual(response.context_data['object_list'].count(), 1)
 
+    def test_order_add_page_returns_200(self):
+        """To test the status code and the OrderCreateView"""
+        response = self.client.get(self.order_add_url)
+        self.assertTemplateUsed(response, 'orders/order_form.html')
+        self.assertEqual(response.status_code, 200)
 
-    
+    def test_order_add_redirection_when_validation(self):
+        """To check the redirection when a new order is created"""
+        response = self.client.post(self.order_add_url, {
+            'marketplace': 'Fnac',
+            'payment_date': '2020-11-20',
+            'order_amount': '56.28',
+            'currency': 'EUR'
+        })
+        self.assertRedirects(
+            response, '/', status_code=302, target_status_code=200
+        )
+
+    def test_order_update_page_returns_200(self):
+        """To test the status code and the OrderUpdateView"""
+        response = self.client.get(self.order_update_url)
+        self.assertTemplateUsed(response, 'orders/order_update.html')
+        self.assertEqual(response.status_code, 200)
+
+    def test_order_update_redirection_when_validation(self):
+        """To check the redirection when an order is modified"""
+        response = self.client.post(self.order_update_url, {
+            'marketplace': 'Amazon',
+            'payment_date': '2020-11-19',
+            'order_amount': '451.21',
+            'currency': 'USD',
+        })
+        self.assertRedirects(
+            response, '/', status_code=302, target_status_code=200
+        )

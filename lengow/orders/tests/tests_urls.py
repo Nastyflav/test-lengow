@@ -18,6 +18,8 @@ class TestUrls(TestCase):
         cls.index_url = reverse('orders:index')
         cls.order_url = reverse('orders:order', args=[1])
         cls.result_url = reverse('orders:results')
+        cls.order_add_url = reverse('orders:order-add')
+        cls.order_update_url = reverse('orders:order-update', args=[1])
 
     def test_index_page_url(self):
         """To check the index url when requested"""
@@ -30,3 +32,11 @@ class TestUrls(TestCase):
     def test_query_results_page_url(self):
         """To check the query results url when requested"""
         self.assertEqual(self.result_url, '/results/')
+
+    def test_order_add_page_url(self):
+        """To check the order add url when requested"""
+        self.assertEqual(self.order_add_url, '/add/')
+
+    def test_order_update_page_url(self):
+        """To check the order update url when requested"""
+        self.assertEqual(self.order_update_url, '/order/update/1')
