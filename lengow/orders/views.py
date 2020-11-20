@@ -18,7 +18,7 @@ class IndexView(ListView):
     model = Order
 
     def query_set(self):
-        return Order.objects.filter().order_by("id")
+        return Order.objects.filter().order_by('id')
 
 
 class OrderDetailsView(DetailView):
