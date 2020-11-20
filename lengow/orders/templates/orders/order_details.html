@@ -28,6 +28,10 @@
             <li><strong>Montant :</strong> Devise inconnue</li>
             {% endif %}
         </ul>
+        <div class="row">
+            <button type="button">
+            <a href="{% url 'orders:order-update' object.id %}">Modifier la commande</a></button>
+        </div>
     </div>
     <div class="col-lg-2">
         <p>
