@@ -2,7 +2,7 @@
 
 ## Development env
 
-git clone https://github.com/Nastyflav/test-lengow.git \
+`git clone https://github.com/Nastyflav/test-lengow.git` \
 `pip install -r requirements.txt` to install dependencies
 
 ## Run Django Server
