@@ -9,7 +9,7 @@ Licence: `GNU GPL v3` GNU GPL v3: http://www.gnu.org/licenses/
 
 from django.core.management.base import BaseCommand
 
-from .api_request import APIRequest
+from orders.api_request import APIRequest
 
 
 class Command(BaseCommand):
