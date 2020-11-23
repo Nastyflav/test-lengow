@@ -48,6 +48,7 @@ class OrderSearchView(ListView):
 
         return orders
 
+
 class OrderCreateView(CreateView):
     """To create a new order object"""
     model = Order
