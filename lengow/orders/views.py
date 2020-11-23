@@ -37,9 +37,16 @@ class OrderSearchView(ListView):
         query = self.request.GET.get('query')
         query = str(query).casefold()
 
-        return Order.objects.filter(
-            marketplace__icontains=query).order_by('id')
+        orders = Order.objects.filter(
+            marketplace__icontains=query).order_by('id') | \
+            Order.objects.filter(
+            payment_date__icontains=query).order_by('id') | \
+            Order.objects.filter(
+            order_amount__icontains=query).order_by('id') | \
+            Order.objects.filter(
+            currency__icontains=query).order_by('id')
 
+        return orders
 
 class OrderCreateView(CreateView):
     """To create a new order object"""
