@@ -14,10 +14,10 @@
         {% endfor %}
     </div>
     <div class="col-lg-6">
-        <h2>Recherche (par marketplace)</h2>
+        <h2>Recherche par champs</h2>
         <form method="get" action="{% url 'orders:results' %}">
             <div>
-                <input type="text" name="query" class="form-control" placeholder="Pour ce test, commandes Amazon ou Cdiscount" required>
+                <input type="text" name="query" class="form-control" placeholder="Au choix : marketplace / date de paiement / montant / devise" required>
             </div>
             <div>
              <button type="submit">Go!</button>
