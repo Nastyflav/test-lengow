@@ -8,8 +8,10 @@ Licence: `GNU GPL v3` GNU GPL v3: http://www.gnu.org/licenses/
 """
 
 from django.views.generic import DetailView, ListView, CreateView, UpdateView
+from rest_framework. viewsets import ModelViewSet
 
 from orders.models import Order
+from orders.serializers import OrderSerializer
 
 
 class IndexView(ListView):
@@ -62,3 +64,9 @@ class OrderUpdateView(UpdateView):
     template_name = 'orders/order_update.html'
     fields = ['marketplace', 'payment_date', 'order_amount', 'currency']
     success_url = '/'
+
+
+class OrderViewSet(ModelViewSet):
+    """To get all the orders and serialize its datas"""
+    queryset = Order.objects.all()
+    serializer_class = OrderSerializer

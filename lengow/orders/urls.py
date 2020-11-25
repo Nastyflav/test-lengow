@@ -7,11 +7,15 @@ Licence: `GNU GPL v3` GNU GPL v3: http://www.gnu.org/licenses/
 
 """
 
-from django.urls import path
+from django.urls import path, include
+from rest_framework import routers
 
 from orders import views
 
 app_name = 'orders'
+
+router = routers.DefaultRouter()
+router.register('orders', views.OrderViewSet)
 
 urlpatterns = [
     path('', views.IndexView.as_view(), name='index'),
@@ -21,5 +25,6 @@ urlpatterns = [
     path(
         'order/update/<int:pk>',
         views.OrderUpdateView.as_view(),
-        name='order-update')
+        name='order-update'),
+    path('api/', include(router.urls)),
 ]
